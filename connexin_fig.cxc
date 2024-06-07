@@ -1,0 +1,100 @@
+#Reset
+close session
+cx_init
+
+# Open models
+#ref
+cx23
+cx25
+cx26
+cx30
+cx30_3
+cx31
+cx31_1
+cx31_3
+cx31_9
+cx32
+cx36
+cx37
+cx39
+cx40
+cx43
+cx45
+cx46
+cx47
+cx50
+cx59
+cx62
+
+dssp
+# Adds missing hydrogen bonding
+ribbons
+# Superpose
+#view initial #1-21
+align #2-21:10-200@CA toAtoms  #1:10-200@CA each structure
+hide cartoons
+show :10-200 cartoons
+#ribbon presentation
+# Camera
+camera ortho
+
+tile columns 5 spacingfactor 1.25
+
+zoom pixelsize 1.25
+~clip
+view matrix camera -0.21418,0.77553,-0.59387,-1922.5,-0.52707,0.42012,0.73871,1594.8,0.82239,0.47123,0.31878,931.03
+cofr -361.63,-346.65,93.203
+
+# Tile models
+tile columns 5 spacingfactor 1
+zoom pixelsize 1
+~clip
+view matrix camera -0.21418,0.77553,-0.59387,-1428.9,-0.52707,0.42012,0.73871,1201.5,0.82239,0.47123,0.31878,682.36
+cofr -252.81,-271.45,70.726
+show cartoons
+turn y -5
+# Style of lighting and so on. These heavily limit the performance, and changes the view parameters. 
+cxgfx
+
+#Save by chain
+color bychain
+#figsave cx_tile_top_chain
+afcol #1-21
+#figsave cx_tile_top_AF
+
+
+###side view
+~tile
+wait 1
+hide cartoons
+show :10-200 cartoons
+align #2-21:10-200@CA toAtoms  #1:10-200@CA each structure
+turn x -90
+wait 1
+tile columns 5 spacingfactor 1.25
+
+zoom pixelsize 1.75
+show cartoons
+#save
+#figsave cx_tile_side_AF
+color bychain
+#figsave cx_tile_side_chain
+hide #1-21@@bfactor<=50 cartoons
+#zoom pixelsize 1.25
+#figsave cx_tile_side_pruned
+#so far the scripts seems to work fine, when running line by line, but not when runnning the whole script.
+#introduce cx43 and cx26 and compare to them. 
+hide cartoons
+show #3,15 cartoons
+#maeda cx26
+open 2zw3
+#cx43
+open 7Z23
+cartoons
+#reference all to cx 26
+mm #22,23,15 to #3/A 
+tile columns 2
+figsave
+
+predict C-terminal tails, will there be trimers between three hexameres systematically. 
+
